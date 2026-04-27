@@ -4,6 +4,9 @@ import entidades.Medico;
 import DAO.AnimalDAO;
 import DAO.ClienteDAO;
 import DAO.MedicoDAO;
+import Exibir.Apresentacao;
+import Exibir.ExebirAnimal;
+import Exibir.ExebirCliente;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -11,21 +14,30 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        
         int cadastro;
-        System.out.println("Deseja cadastrar 1)Cliente , 2)Medico 3)Animal ::");
-        cadastro = scanner.nextInt();
-        scanner.nextLine();
-        String nome;
-        String telefone;
-        String crm;
-        String sexo;
-        LocalDate nascimento;
-        float peso;
-        String tipoAnimal;
-        int dono;
-        if(cadastro == 1){  
+        Apresentacao apresentacao = new Apresentacao();
+        apresentacao.apresentarPetShop();
+
+        if (apresentacao.getEscolha() == 1) {
             Cliente clientela = new Cliente();
+            Medico med = new Medico();
+            Animal ani = new Animal();
+
+            
+            String nome;
+            String telefone;
+            String crm;
+            String sexo;
+            LocalDate nascimento;
+            float peso;
+            String tipoAnimal;
+            int dono;
+
+            System.out.println("Deseja cadastrar 1)Cliente , 2)Medico 3)Animal ::");
+            cadastro = scanner.nextInt();
+            scanner.nextLine();
+
+            if(cadastro == 1){  
             System.out.print("Nome do Dono do Pet: ");
             nome = scanner.nextLine();
 
@@ -41,7 +53,6 @@ public class App {
         }
 
         else if(cadastro == 2){
-            Medico med = new Medico();
             System.out.print("Nome:");
             nome = scanner.nextLine();
 
@@ -61,7 +72,6 @@ public class App {
             
             new MedicoDAO().cadastrarMedico(med);
         }else if(cadastro == 3){
-            Animal ani = new Animal();
             System.out.print("Nome do Animal.......");
             nome = scanner.nextLine();
             System.out.print("Data Nascimento......");
@@ -71,6 +81,12 @@ public class App {
             tipoAnimal = scanner.nextLine();
             System.out.print("Peso.................");
             peso = scanner.nextFloat();
+            scanner.nextLine();
+            System.out.print("Conlutar Donos Cadastrados: S | N........");
+            String esc = scanner.nextLine();
+            if(esc.equalsIgnoreCase("S")){
+                new ExebirCliente().ExibirInfoCliente(clientela);
+            }
             System.out.print("Dono.................");
             dono = scanner.nextInt();
 
@@ -79,11 +95,16 @@ public class App {
             ani.setTipoAnimal(tipoAnimal);
             ani.setPeso(peso);
             ani.setCodCliente(dono);
-
+            
             new AnimalDAO().cadastrarAnimal(ani);
             System.out.println("Animal Cadastrado");
+            new ExebirAnimal().ExebirInfoAnimal(ani);
         }
 
+        }    
+        
+        
+        
         scanner.close();
     }
 }
