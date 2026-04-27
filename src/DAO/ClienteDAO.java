@@ -7,6 +7,7 @@ import conexao.Conexao;
 import entidades.Cliente;
 //No DAO é onde que o vamos pegar as nossas informações e jogar no banco de dados
 public class ClienteDAO {
+    
     public void cadastrarCliente(Cliente cliente){
         //comando de sql de insert into, no ? é onde vamos receber nossos valores (ELES REPRESENTAM OS VALORES)
         String sql = "INSERT INTO cliente(NOME, TELEFONE) VALUES (?, ?)";
