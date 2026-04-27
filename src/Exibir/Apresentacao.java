@@ -10,7 +10,7 @@ public class Apresentacao {
         System.out.println("\t \tBem Vindo ao PetShop Alfa");
         System.out.println("================================================================");
         System.out.println("\tO Melhor Atendimento que você e seu pet merece!");
-       System.out.println("\nComo podemos te ajudar: 1) Adicionar 2)Excluir ");
+       System.out.println("\nComo podemos te ajudar: 1)Adicionar 2)Excluir 3)Consultar");
        int num = scanner.nextInt();
        setEscolha(num);
     }
