@@ -1,6 +1,8 @@
 package DAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import conexao.Conexao;
@@ -55,4 +57,26 @@ public class ExebirDAO {
                 System.out.println("ID:"+id+"\tNOME:"+nome+"\tTELEFONE:"+telefone+"\tSEXO:"+sexo+"\tCRM:"+ crm);
             }
         } catch (Exception e) {  } }
+        public void BuscarMedico(Medico medico){
+            String sql = "SELECT * FROM medico where nome like  ?";
+            try {
+                PreparedStatement md = Conexao.getConexao().prepareStatement(sql);
+                md.setString(1, medico.getNome() + "%");
+                resultSet = md.executeQuery();
+
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("idMedico");
+                    String nome = resultSet.getString("nome");
+                    String sexo = resultSet.getString("sexo");
+                    String crm = resultSet.getString("crm");
+                    String telefone = resultSet.getString("telefone");
+                    System.out.println("ID:"+id+"\tNOME:"+nome+"\tTELEFONE:"+telefone+"\tSEXO:"+sexo+"\tCRM:"+ crm);
+                }
+                
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
 }

@@ -2,7 +2,6 @@ package DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import conexao.Conexao;
 import entidades.Cliente;
 import entidades.Medico;

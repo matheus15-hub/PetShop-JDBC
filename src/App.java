@@ -151,24 +151,37 @@ public class App {
 
         }else if (apresentacao.getEscolha() == 3) {
             System.out.println("================================================================");
-            System.out.println("Consultar. 1)Cliente 2)Animal 3)Medico");
-            System.out.print("Escolha:");
+            System.out.println("Consultar: 1)Todos os Dados  2)Apenas Um");
+            System.out.print("::");
             int esc = scanner.nextInt();
             scanner.nextLine();
-            switch(esc){
-                case 1:
-                    new DAO.ExebirDAO().ExibirInfoCliente(clientela);
-                    break;
-                case 2:
-                    new DAO.ExebirDAO().ExebirInfoAnimal(ani);
-                    break;
-                case 3:
-                    new DAO.ExebirDAO().ExibirInfoMedico(med);
-                    break;
-                default:
-                    System.out.println("Opeção Invalida!");
-                    break;
-                    
+            if(esc == 1){
+
+                System.out.println("Consultar. 1)Cliente 2)Animal 3)Medico");
+                System.out.print("Escolha:");
+                esc = scanner.nextInt();
+                scanner.nextLine();
+                switch(esc){
+                    case 1:
+                        new DAO.ExebirDAO().ExibirInfoCliente(clientela);
+                        break;
+                        case 2:
+                            new DAO.ExebirDAO().ExebirInfoAnimal(ani);
+                            break;
+                            case 3:
+                                new DAO.ExebirDAO().ExibirInfoMedico(med);
+                                break;
+                                default:
+                                    System.out.println("Opeção Invalida!");
+                                    break;
+                                    
+                                }
+                            }
+            else if(esc == 2){
+                System.out.print("Digite o nome:");
+                String nome = scanner.nextLine();
+                med.setNome(nome);
+                new DAO.ExebirDAO().BuscarMedico(med);
             }
 
         }else{
