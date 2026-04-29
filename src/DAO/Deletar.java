@@ -13,22 +13,37 @@ public class Deletar {
 
         try {
             String sql = "DELETE FROM cliente where idCliente = ?"; 
-            String sqlAninmal = "DELETE FROM animal where idCliente = ?";
+            String sqlAninmal = "DELETE FROM animal where codCliente = ?";
             
+            //primeiro deletamos o animal que esta logado com o cliente, como o animal tem uma chave estrangeira not null no campo de atrinbutos, se tentarmos apagar o cliente antes da erro.
             PreparedStatement st = Conexao.getConexao().prepareStatement(sql);
             PreparedStatement an = Conexao.getConexao().prepareStatement(sqlAninmal);
             
-            st.setInt(1, cliente.getIdCliente());
             an.setInt(1, animal.getCodCliente());
+            st.setInt(1, cliente.getIdCliente());
 
-            int delecot = st.executeUpdate();
             int deletan = an.executeUpdate();
+            int delecot = st.executeUpdate();
 
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    public void deletarAnimal(Animal animal){
+        String sql = "DELETE FROM animal where idAnimal = ?";
+        try {
+            PreparedStatement an = Conexao.getConexao().prepareStatement(sql);
+            an.setInt(1, animal.getIdAnimal());
+            int dele = an.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+
     }
     public void deletarMedicos(Medico medico){
 
@@ -44,9 +59,7 @@ public class Deletar {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
-
     }
+
     
 }

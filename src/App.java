@@ -5,10 +5,6 @@ import DAO.AnimalDAO;
 import DAO.ClienteDAO;
 import DAO.MedicoDAO;
 import Exibir.Apresentacao;
-import Exibir.ExebirAnimal;
-import Exibir.ExebirCliente;
-import Exibir.ExebirMedico;
-
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -21,9 +17,11 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         int cadastro;
+        
         Apresentacao apresentacao = new Apresentacao();
         apresentacao.apresentarPetShop();
 
+        //CADASTRAR============
         if (apresentacao.getEscolha() == 1) {
             String nome;
             String telefone;
@@ -86,7 +84,7 @@ public class App {
             System.out.print("Conlutar Donos Cadastrados: S | N........");
             String esc = scanner.nextLine();
             if(esc.equalsIgnoreCase("S")){
-                new ExebirCliente().ExibirInfoCliente(clientela);
+                new DAO.ExebirDAO().ExibirInfoCliente(clientela);
             }
             System.out.print("Dono.................");
             dono = scanner.nextInt();
@@ -99,32 +97,58 @@ public class App {
             
             new AnimalDAO().cadastrarAnimal(ani);
             System.out.println("Animal Cadastrado");
-            new ExebirAnimal().ExebirInfoAnimal(ani);
+            new DAO.ExebirDAO().ExebirInfoAnimal(ani);
         }
 
+        //EXCLUIR=======================================
+
         }else if (apresentacao.getEscolha() == 2) {
-            /*
-            new ExebirCliente().ExibirInfoCliente(clientela);
-            System.out.println("=====================================\nEscolha um cadastro para apagar pelo ID");
+
+            System.out.println("Deseja excluir:1)Animal, 2)Cliente, 3)Medico");
             System.out.print("Escolha:");
             int esc = scanner.nextInt();
-            clientela.setIdCliente(esc);
-            ani.setCodCliente(esc);
-            new DAO.Deletar().deletarCliente(clientela , ani );;
-            
-            new ExebirCliente().ExibirInfoCliente(clientela);
-            */
-           System.out.println("------------------------------------------");
-           System.out.println("Escolha um medico para vc deletar usando o 'ID' dele \n");
-           new ExebirMedico().ExibirInfoMedico(med);
-           System.out.print("ID::");
-           int esc = scanner.nextInt();
-           med.setIdMedico(esc);
-           new DAO.Deletar().deletarMedicos(med);
-           new ExebirMedico().ExibirInfoMedico(med);
+            if(esc == 1){
+                System.err.println("\nAnimais Cadastrados");
+                new DAO.ExebirDAO().ExebirInfoAnimal(ani);
+                System.err.println("=========================================");
+                System.out.println("Escolha algum animal para excluir apartir do ID dele");
+                System.out.print("Escolha::");
+                esc = scanner.nextInt();
+                ani.setIdAnimal(esc);
+                new DAO.Deletar().deletarAnimal(ani);
+                new DAO.ExebirDAO().ExebirInfoAnimal(ani);
 
+            }
+            else if(esc == 2){
 
-            
+                new DAO.ExebirDAO().ExibirInfoCliente(clientela);
+                System.out.println("=====================================\nEscolha um cadastro para apagar pelo ID");
+                System.out.print("Escolha:");
+                esc = scanner.nextInt();
+                ani.setCodCliente(esc);
+                clientela.setIdCliente(esc);
+                new DAO.Deletar().deletarCliente(clientela , ani );;
+                
+                new DAO.ExebirDAO().ExibirInfoCliente(clientela);
+            }
+            else if(esc == 3){
+                
+               System.out.println("------------------------------------------");
+               System.out.println("Escolha um medico para vc deletar usando o 'ID' dele \n");
+               new DAO.ExebirDAO().ExibirInfoMedico(med);
+               System.out.print("ID::");
+                esc = scanner.nextInt();
+               med.setIdMedico(esc);
+               new DAO.Deletar().deletarMedicos(med);
+               new DAO.ExebirDAO().ExibirInfoMedico(med);
+
+            }
+            else{
+                System.out.println("Opção invalida");
+            }
+
+            //CONSULTAR==================================
+
         }else if (apresentacao.getEscolha() == 3) {
             System.out.println("================================================================");
             System.out.println("Consultar. 1)Cliente 2)Animal 3)Medico");
@@ -133,13 +157,13 @@ public class App {
             scanner.nextLine();
             switch(esc){
                 case 1:
-                    new ExebirCliente().ExibirInfoCliente(clientela);
+                    new DAO.ExebirDAO().ExibirInfoCliente(clientela);
                     break;
                 case 2:
-                    new ExebirAnimal().ExebirInfoAnimal(ani);
+                    new DAO.ExebirDAO().ExebirInfoAnimal(ani);
                     break;
                 case 3:
-                    new ExebirMedico().ExibirInfoMedico(med);
+                    new DAO.ExebirDAO().ExibirInfoMedico(med);
                     break;
                 default:
                     System.out.println("Opeção Invalida!");
@@ -150,9 +174,10 @@ public class App {
         }else{
             System.out.println("Opeção invalida!");
         }
-        
-        
-        
+       
         scanner.close();
+    
+        
+        
     }
 }
