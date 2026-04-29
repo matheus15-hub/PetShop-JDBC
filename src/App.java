@@ -103,17 +103,25 @@ public class App {
         }
 
         }else if (apresentacao.getEscolha() == 2) {
-
+            /*
             new ExebirCliente().ExibirInfoCliente(clientela);
             System.out.println("=====================================\nEscolha um cadastro para apagar pelo ID");
             System.out.print("Escolha:");
             int esc = scanner.nextInt();
             clientela.setIdCliente(esc);
             ani.setCodCliente(esc);
-            new DAO.ClienteDel().deletarCliente(clientela , ani );;
-
+            new DAO.Deletar().deletarCliente(clientela , ani );;
+            
             new ExebirCliente().ExibirInfoCliente(clientela);
-
+            */
+           System.out.println("------------------------------------------");
+           System.out.println("Escolha um medico para vc deletar usando o 'ID' dele \n");
+           new ExebirMedico().ExibirInfoMedico(med);
+           System.out.print("ID::");
+           int esc = scanner.nextInt();
+           med.setIdMedico(esc);
+           new DAO.Deletar().deletarMedicos(med);
+           new ExebirMedico().ExibirInfoMedico(med);
 
 
             
