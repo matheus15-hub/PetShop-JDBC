@@ -103,6 +103,19 @@ public class App {
         }
 
         }else if (apresentacao.getEscolha() == 2) {
+
+            new ExebirCliente().ExibirInfoCliente(clientela);
+            System.out.println("=====================================\nEscolha um cadastro para apagar pelo ID");
+            System.out.print("Escolha:");
+            int esc = scanner.nextInt();
+            clientela.setIdCliente(esc);
+            ani.setCodCliente(esc);
+            new DAO.ClienteDel().deletarCliente(clientela , ani );;
+
+            new ExebirCliente().ExibirInfoCliente(clientela);
+
+
+
             
         }else if (apresentacao.getEscolha() == 3) {
             System.out.println("================================================================");
