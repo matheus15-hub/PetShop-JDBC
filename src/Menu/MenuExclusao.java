@@ -35,7 +35,7 @@ public class MenuExclusao {
     }
 
     public void medicoExc(Medico medico){
-        System.out.println("\tExcluindo Medico");
+        System.out.println("\t\tExcluindo Medico");
         new Medicoser().listarMedico();
         System.out.println("Escolha um Medico para excluir(ESCOLHA APARTI DO ID)");
         System.out.print("ID..");

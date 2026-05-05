@@ -19,14 +19,18 @@ public class ExebirDAO {
         
         //MOSTRAR ANIMAL TABELA===================================================
     public void ExebirInfoAnimal(Animal animal){
+        String sql = "";
         try {
             statement = Conexao.getConexao().createStatement();
             resultSet = statement.executeQuery("SELECT * FROM animal");
             while (resultSet.next()) {
                 int id = resultSet.getInt("idAnimal");
                 String nome = resultSet.getString("nome");
+                nome.toUpperCase();
                 String tipoanimal = resultSet.getString("tipoAnimal");
                 int codC = resultSet.getInt("codCliente");
+                linha();
+                System.out.println("||\t\tCOD: "+ id +"| | NOME:");
                 System.out.println("Codigo:" + id +"\tNome:"+nome+"\tEspecie:"+tipoanimal+"\tDono:"+codC);
             }
         } catch (Exception e) { } }
@@ -40,8 +44,14 @@ public class ExebirDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("idCliente");
                 String nome = resultSet.getString("nome");
+                 nome.toUpperCase();
                 String telefone = resultSet.getString("telefone");
-                System.out.println("ID:"+id+"\tNOME:"+nome+"\tTELEFONE:"+telefone );
+                linha();
+                    System.out.println("||\t\tCODIGO: " + id);
+                    linha();
+                    System.out.println("||\tNome: "+ nome + " | | TELEFONE: "+ telefone );
+                    linha();
+                    System.out.println("");
             }
         } catch (Exception e) { } }
 
@@ -52,12 +62,18 @@ public class ExebirDAO {
             statement = Conexao.getConexao().createStatement();
             resultSet = statement.executeQuery("SELECT * FROM medico");
             while (resultSet.next()) {
-                int id = resultSet.getInt("idMedico");
-                String nome = resultSet.getString("nome");
-                String sexo = resultSet.getString("sexo");
-                String crm = resultSet.getString("crm");
-                String telefone = resultSet.getString("telefone");
-                System.out.println("ID:"+id+"\tNOME:"+nome+"\tTELEFONE:"+telefone+"\tSEXO:"+sexo+"\tCRM:"+ crm);
+                    int id = resultSet.getInt("idMedico");
+                    String nome = resultSet.getString("nome");
+                     nome.toUpperCase();
+                    String sexo = resultSet.getString("sexo");
+                    String crm = resultSet.getString("crm");
+                    String telefone = resultSet.getString("telefone");
+                    linha();
+                    System.out.println("||\t\tCODIGO: " + id+ " | | NOME: "+ nome);
+                    linha();
+                    System.out.println("||CRM: "+ crm + " | | TELEFONE: "+ telefone + " | | SEXO: "+ sexo );
+                    linha();
+                    System.out.println("");
             }
         } catch (Exception e) {  } }
         public void BuscarMedico(Medico medico){
@@ -73,7 +89,11 @@ public class ExebirDAO {
                     String sexo = resultSet.getString("sexo");
                     String crm = resultSet.getString("crm");
                     String telefone = resultSet.getString("telefone");
-                    System.out.println("ID:"+id+"\tNOME:"+nome+"\tTELEFONE:"+telefone+"\tSEXO:"+sexo+"\tCRM:"+ crm);
+                    linha();
+                    System.out.println("||\t\tCODIGO: " + id+ " | | NOME: "+ nome);
+                    linha();
+                    System.out.println("||CRM: "+ crm + " | | TELEFONE: "+ telefone + " | | SEXO: "+ sexo );
+                    
                 }
                 
             } catch (SQLException e) {
@@ -102,7 +122,9 @@ public class ExebirDAO {
                             .toLocalDateTime();
 
                     String nomeAnimal = resultSet.getString("nomeAnimal");
+                     nomeAnimal.toUpperCase();
                     String nomeMedico = resultSet.getString("nomeMedico");
+                     nomeMedico.toUpperCase();
                     String prescrissao = resultSet.getString("prescrissao");
 
                     float preco = resultSet.getFloat("preco");

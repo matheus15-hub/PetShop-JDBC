@@ -53,7 +53,7 @@ public class MenuCadastrar {
         animal.setNome(scanner.nextLine());
 
         System.out.print("Data Nascimento..");
-        animal.setNascimento(LocalDate.parse(scanner.nextLine()));
+        animal.setNascimento(scanner.nextLine());
 
         System.out.print("Especie..");
         animal.setTipoAnimal(scanner.nextLine());
@@ -93,10 +93,6 @@ public class MenuCadastrar {
         new Consultaser().cadastrar(consulta);
 
     }
-
-
-
-
 
     private int selecionardono(){
         System.out.print("Consultar donos cadastrados: S | N ..");

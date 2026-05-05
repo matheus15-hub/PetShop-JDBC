@@ -31,9 +31,8 @@ public class Animal {
         return nascimento;
     }
     public void setNascimento(String nascimento) {
-        DateTimeFormatter dd = DateTimeFormatter.ofLocalizedDate("dd/MM/yyyy");
-
-        this.nascimento = nascimento;
+        DateTimeFormatter dd = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.nascimento = LocalDate.parse(nascimento, dd);
     }
 
     public String getTipoAnimal() {
