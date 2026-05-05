@@ -1,6 +1,8 @@
 package entidades;
+import java.text.DateFormat;
 //tem que importa isso para pode usar o Localdate, tambem posso utlizar o Datetime
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Animal {
     private int idAnimal;
@@ -28,7 +30,9 @@ public class Animal {
     public LocalDate getNascimento() {
         return nascimento;
     }
-    public void setNascimento(LocalDate nascimento) {
+    public void setNascimento(String nascimento) {
+        DateTimeFormatter dd = DateTimeFormatter.ofLocalizedDate("dd/MM/yyyy");
+
         this.nascimento = nascimento;
     }
 

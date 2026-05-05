@@ -16,6 +16,10 @@ public class Animalser {
          new AnimalDAO().cadastrarAnimal(animal);
         System.out.println("Animal cadastrado com sucesso!");
     }
+    public void excluir(Animal animal){
+        new DAO.Deletar().deletarAnimal(animal);
+        System.out.println("Deletado com sucesso!");
+    }
     public void listarAnimais(Animal animal){
         new DAO.ExebirDAO().ExebirInfoAnimal(animal);
     }
