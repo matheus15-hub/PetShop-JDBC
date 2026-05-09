@@ -2,16 +2,13 @@ import entidades.Animal;
 import entidades.Cliente;
 import entidades.Consulta;
 import entidades.Medico;
-import DAO.AnimalDAO;
-import DAO.ClienteDAO;
-import DAO.MedicoDAO;
+
 import Exibir.Apresentacao;
+
 import Menu.MenuCadastrar;
 import Menu.MenuExclusao;
 import Menu.MenuExibir;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class App {
@@ -113,11 +110,7 @@ public class App {
                     break;
             }
         }else if(apresentacao.getEscolha() == 5){break;}
-        else{System.out.println("Opção Invalida");}
-        System.out.println("\n\nDeseja Finalizar o programa? S | N");
-        String finalizarP = scanner.nextLine();
-        if(finalizarP.equalsIgnoreCase("s")){break;}
-        scanner.nextLine();
+        else{System.out.println("Opção Invalida");
     }
     System.out.println("Sistema Finalizado");
     scanner.close();

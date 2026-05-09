@@ -21,8 +21,8 @@ public class Deletar {
             an.setInt(1, animal.getCodCliente());
             st.setInt(1, cliente.getIdCliente());
 
-            int deletan = an.executeUpdate();
-            int delecot = st.executeUpdate();
+            an.executeUpdate();
+            st.executeUpdate();
 
 
         } catch (SQLException e) {
@@ -35,7 +35,7 @@ public class Deletar {
         try {
             PreparedStatement an = Conexao.getConexao().prepareStatement(sql);
             an.setInt(1, animal.getIdAnimal());
-            int dele = an.executeUpdate();
+            an.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class Deletar {
 
             md.setInt(1, medico.getIdMedico());
 
-            int dele = md.executeUpdate();
+            md.executeUpdate();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
